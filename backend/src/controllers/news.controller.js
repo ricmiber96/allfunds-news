@@ -1,10 +1,10 @@
-const News = require('../models/news.model')
+const Advice = require('../models/news.model')
 
 const getAllAdvices = async (req, res) => {
   try {
-    const news = await News.find({})
+    const advices = await Advice.find({})
     res.status(200)
-    res.json(news)
+    res.json(advices)
   } catch (err) {
     console.log(console.log(err))
   }
@@ -13,7 +13,7 @@ const getAllAdvices = async (req, res) => {
 const createAdvices = async (req, res) => {
   const { title, description, date, content, author, archiveDate } = req.body
   try {
-    const newAdvices = await News.create({
+    const newAdvices = await Advice.create({
       title, description, date, content, author, archiveDate
     })
     res.status(201).json(newAdvices)
