@@ -1,8 +1,11 @@
 import { React, useState } from 'react'
 import { IoAdd, IoSend } from 'react-icons/io5'
+import { useNavigate } from 'react-router-dom'
+
 export default function AddNewsButton () {
   const [visibleModal, setVisibleModal] = useState(false)
   const [advice, setAdvice] = useState([])
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const name = e.target.name
@@ -32,7 +35,11 @@ export default function AddNewsButton () {
         console.log(err.message)
       })
     setVisibleModal(!visibleModal)
-    window.location.reload(false)
+    if (window.location.pathname !== '/') {
+      navigate('/')
+    } else {
+      window.location.reload(false)
+    }
   }
 
   return (
@@ -86,7 +93,7 @@ export default function AddNewsButton () {
                           name='title'
                           onChange={handleChange}
                           placeholder='Add title...'
-                          className='bg-gray-600 placeholder-white rounded-md focus:border-white p-2'
+                          className='bg-gray-600 placeholder-white text-white rounded-md focus:border-white p-2'
                         />
                       </div>
                       <div className='mt-2 p-4'>
@@ -102,7 +109,7 @@ export default function AddNewsButton () {
                           name='description'
                           onChange={handleChange}
                           placeholder='Add description...'
-                          className='bg-gray-600 placeholder-white rounded-md focus:border-white p-2'
+                          className='bg-gray-600 placeholder-white text-white rounded-md focus:border-white p-2'
                         />
                       </div>
                       <div className='mt-2 p-4'>
@@ -118,7 +125,7 @@ export default function AddNewsButton () {
                           name='author'
                           onChange={handleChange}
                           placeholder='Author'
-                          className='bg-gray-600 placeholder-white rounded-md focus:border-white p-2'
+                          className='bg-gray-600 placeholder-white text-white rounded-md focus:border-white p-2'
                         />
                       </div>
                       <div className='p-5'>
@@ -135,7 +142,7 @@ export default function AddNewsButton () {
                           placeholder='Add new content...'
                           rows='6'
                           cols='22'
-                          className='bg-gray-600 placeholder-white rounded-md focus:border-white p-2'
+                          className='bg-gray-600 placeholder-white text-white rounded-md focus:border-white p-2'
                         />
                       </div>
                       <div className='flex items-center justify-between p-6'>
