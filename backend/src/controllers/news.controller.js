@@ -23,6 +23,30 @@ const createAdvices = async (req, res) => {
   }
 }
 
+const updateAdvices = async (req, res) => {
+  try {
+    const adviceUpdated = await Advice.updateOne({ _id: req.params.id }, { archiveDate: new Date() })
+    res.status(201).json(adviceUpdated)
+  } catch (err) {
+    res.status(400)
+    res.json(err)
+  }
+}
+
+const deleteAdvices = async (req, res) => {
+  try {
+    const id = req.params.id
+    await Advice.findByIdAndDelete(id)
+      .then(() => {
+        res.status(204).end()
+      })
+      .catch(err => console.log(err))
+  } catch (err) {
+    res.status(400)
+    res.json(err)
+  }
+}
+
 module.exports = {
-  getAllAdvices, createAdvices
+  getAllAdvices, createAdvices, updateAdvices, deleteAdvices
 }
