@@ -7,7 +7,7 @@
 - Vite
 - Standard (Eslint)
 
-## :gem: Additional Features
+## :wrench: Project setup
 
 ```bash
 # Clone repository
