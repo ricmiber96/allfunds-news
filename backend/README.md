@@ -32,7 +32,7 @@
 # Clone repository
 git clone 
 
-# Inside the project go to client folder
+# Inside the project go to backend folder
 cd backend
 
 # Install project dependencies
